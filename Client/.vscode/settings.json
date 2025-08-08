@@ -1,0 +1,7 @@
+{
+  // Cho Pylance biết thêm 1 đường dẫn search module
+  "python.analysis.extraPaths": [
+    "."           // dấu chấm nghĩa là root của workspace,
+                 // nơi chứa config.py, graphics.py, main.py, v.v.
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wqSg8h9cMdA=",
+  "success": true,
+  "projectFilePath": "D:\\Tai lieu\\LTM\\GamePong\\PongServer\\PongServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PhatNT\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
