@@ -65,7 +65,7 @@ async def main():
         pygame.quit()
         sys.exit()
 
-    # --- VÒNG LẶP CHÍNH CỦA GAME ---
+        # --- VÒNG LẶP CHÍNH CỦA GAME ---
     running = True
     while running:
         # --- XỬ LÝ INPUT TỪ NGƯỜI DÙNG ---
@@ -73,12 +73,22 @@ async def main():
             if event.type == pygame.QUIT:
                 running = False
             
-            if current_state.get("Status") == "Ended" and event.type == pygame.MOUSEBUTTONDOWN:
-                if play_again_button_rect and play_again_button_rect.collidepoint(event.pos):
-                    print("Sending PLAY_AGAIN command to server...")
-                    writer.write("PLAY_AGAIN\n".encode())
-                    current_state["Message"] = "Waiting for other player..."
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # Khi game đã kết thúc -> hiện nút PLAY AGAIN
+                if current_state.get("Status") == "Ended":
+                    if play_again_button_rect and play_again_button_rect.collidepoint(event.pos):
+                        print("Sending PLAY_AGAIN command to server...")
+                        writer.write("PLAY_AGAIN\n".encode())
+                        current_state["Message"] = "Waiting for other player..."
 
+                # Khi game đang ở trạng thái chờ -> hiện nút START
+                elif current_state.get("Status") == "Waiting":
+                    if start_button_rect and start_button_rect.collidepoint(event.pos):
+                        print("Sending START command to server...")
+                        writer.write("START\n".encode())
+                        current_state["Message"] = "Waiting for other player..."
+            
+            # --- Điều khiển bàn ---
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     writer.write("MOVE_UP\n".encode())
@@ -90,6 +100,7 @@ async def main():
                     writer.write("STOP\n".encode())
         
         await writer.drain()
+
 
         # --- NHẬN DỮ LIỆU TỪ SERVER ---
         try:
@@ -146,6 +157,10 @@ async def main():
         if flash_timer > 0:
             screen.blit(flash_surface, (0, 0))
             flash_timer -= 1
+
+        if current_state.get("Status") == "Waiting":
+            start_button_rect = graphics.draw_start_button(screen)
+
             
         pygame.display.flip()
         

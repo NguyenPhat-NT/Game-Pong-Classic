@@ -8,6 +8,15 @@ SCORE_FONT = pygame.font.Font(None, 74)
 MESSAGE_FONT = pygame.font.Font(None, 50)
 SUB_MESSAGE_FONT = pygame.font.Font(None, 30) # <-- Font nhỏ hơn cho hướng dẫn
 
+def draw_start_button(screen):
+    font = pygame.font.Font(None, 48)
+    text = font.render("START GAME", True, (255, 255, 255))
+    rect = text.get_rect(center=(config.SCREEN_WIDTH // 2, config.SCREEN_HEIGHT // 2 + 100))
+
+    pygame.draw.rect(screen, (0, 128, 0), rect.inflate(40, 20))  # nền xanh
+    screen.blit(text, rect)
+    return rect
+
 def draw_game_state(screen, state):
     """
     Vẽ toàn bộ trạng thái game lên màn hình.
