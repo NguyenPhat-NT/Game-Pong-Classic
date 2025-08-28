@@ -22,17 +22,35 @@ namespace PongServer
         public GameServer()
         {
             listener = new TcpListener(IPAddress.Any, Config.Port);
-            InitializeState();
+            ResetGameForWaiting();
         }
 
-        private void InitializeState()
+          private void ResetGameForWaiting()
         {
-            state.Player1Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
-            state.Player2Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
             state.Status = "Waiting";
             state.Message = "Waiting for players...";
+            state.Score1 = 0;
+            state.Score2 = 0;
+            state.Player1Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
+            state.Player2Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
         }
+        private void ResetGameForPlaying()
+        {
+            Console.WriteLine("Both players ready. Resetting the game!");
+            state.Status = "PLAYING";
+            state.Message = "";
+            state.Score1 = 0;
+            state.Score2 = 0;
+            state.Player1Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
+            state.Player2Y = (Config.ScreenHeight - Config.PaddleHeight) / 2;
+            GameLogic.ResetBall(state);
 
+            // Reset trạng thái của các handler để không bị lặp lại việc reset game
+            foreach (var client in clients)
+            {
+                client.ResetPlayAgainStatus();
+            }
+        }
         public async Task StartAsync()
         {
             listener.Start();
@@ -47,7 +65,19 @@ namespace PongServer
 
                 lock (stateLock)
                 {
-                    if (state.Status == "Waiting" && clients.Count(c => c.IsConnected) >= 2)
+                    if (state.Status == "Ended")
+                    {
+                        // Chỉ kiểm tra khi có đủ 2 người chơi kết nối
+                        if (clients.Count(c => c.IsConnected) >= 2)
+                        {
+                            // Nếu tất cả người chơi đều muốn chơi lại
+                            if (clients.All(c => c.WantsToPlayAgain))
+                            {
+                                ResetGameForPlaying();
+                            }
+                        }
+                    }
+                    else if (state.Status == "Waiting" && clients.Count(c => c.IsConnected) >= 2)
                     {
                         Console.WriteLine("Two players connected. Starting game!");
                         state.Status = "PLAYING";
@@ -60,16 +90,16 @@ namespace PongServer
                         // Lấy hướng di chuyển từ ClientHandlers
                         int p1Dir = clients.Count > 0 ? clients[0].Direction : 0;
                         int p2Dir = clients.Count > 1 ? clients[1].Direction : 0;
-                        
+
                         // Cập nhật vị trí paddles và bóng
                         GameLogic.UpdatePaddlePosition(state, p1Dir, p2Dir, PaddleSpeed);
                         GameLogic.UpdateBall(state);
-                       
+
                     }
                 }
 
                 await BroadcastStateAsync();
-                
+
                 var waitTime = interval - (DateTime.UtcNow - loopStart);
                 if (waitTime > TimeSpan.Zero)
                 {
@@ -112,9 +142,13 @@ namespace PongServer
             for (int i = writers.Count - 1; i >= 0; i--)
             {
                 if (!clients[i].IsConnected)
-                {
+                {   
+                    Console.WriteLine($"Player {i + 1} has disconnected. Resetting game to waiting state.");
                     writers.RemoveAt(i);
-                    lock(stateLock) { clients.RemoveAt(i); }
+                    lock (stateLock)
+                    {
+                        clients.RemoveAt(i);
+                    ResetGameForWaiting(); }
                     continue;
                 }
                 

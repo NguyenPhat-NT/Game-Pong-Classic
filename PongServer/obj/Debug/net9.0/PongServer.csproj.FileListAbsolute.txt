@@ -16,3 +16,21 @@ D:\Tai lieu\LTM\GamePong\PongServer\obj\Debug\net9.0\refint\PongServer.dll
 D:\Tai lieu\LTM\GamePong\PongServer\obj\Debug\net9.0\PongServer.pdb
 D:\Tai lieu\LTM\GamePong\PongServer\obj\Debug\net9.0\PongServer.genruntimeconfig.cache
 D:\Tai lieu\LTM\GamePong\PongServer\obj\Debug\net9.0\ref\PongServer.dll
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\PongServer.exe
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\PongServer.deps.json
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\PongServer.runtimeconfig.json
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\PongServer.dll
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\PongServer.pdb
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.csproj.AssemblyReference.cache
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.AssemblyInfoInputs.cache
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.AssemblyInfo.cs
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.csproj.CoreCompileInputs.cache
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.sourcelink.json
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.csproj.Up2Date
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.dll
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\refint\PongServer.dll
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.pdb
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\PongServer.genruntimeconfig.cache
+C:\A\LapTrinhMang\game_pong\Game-Pong-Classic\PongServer\obj\Debug\net9.0\ref\PongServer.dll

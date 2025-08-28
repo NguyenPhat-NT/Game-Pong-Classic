@@ -55,24 +55,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PhatNT\\.nuget\\packages\\": {}
+    "C:\\Users\\ADMIN\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Tai lieu\\LTM\\GamePong\\PongServer\\PongServer.csproj",
+      "projectUniqueName": "C:\\A\\LapTrinhMang\\game_pong\\Game-Pong-Classic\\PongServer\\PongServer.csproj",
       "projectName": "PongServer",
-      "projectPath": "D:\\Tai lieu\\LTM\\GamePong\\PongServer\\PongServer.csproj",
-      "packagesPath": "C:\\Users\\PhatNT\\.nuget\\packages\\",
-      "outputPath": "D:\\Tai lieu\\LTM\\GamePong\\PongServer\\obj\\",
+      "projectPath": "C:\\A\\LapTrinhMang\\game_pong\\Game-Pong-Classic\\PongServer\\PongServer.csproj",
+      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+      "outputPath": "C:\\A\\LapTrinhMang\\game_pong\\Game-Pong-Classic\\PongServer\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PhatNT\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -118,7 +125,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

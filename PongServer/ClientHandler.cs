@@ -19,12 +19,18 @@ namespace PongServer
         /// public để GameServer có thể đọc được.
         /// </summary>
         public int Direction { get; private set; } = 0;
+        public bool WantsToPlayAgain { get; private set; } = false;
 
         public ClientHandler(TcpClient client, int playerNumber)
         {
             this.client = client;
             this.playerNumber = playerNumber;
         }
+         public void ResetPlayAgainStatus()
+        {
+            WantsToPlayAgain = false;
+        }
+
 
         public async Task ListenForCommandsAsync()
         {
@@ -46,6 +52,10 @@ namespace PongServer
                             break;
                         case "STOP":
                             Direction = 0;
+                            break;
+                        case "PLAY_AGAIN":
+                            Console.WriteLine($"Player {playerNumber} wants to play again.");
+                            WantsToPlayAgain = true;
                             break;
                     }
                 }
